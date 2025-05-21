@@ -1,0 +1,16 @@
+
+[font]
+normal.family = "Roboto Mono" 
+size = 7
+
+[window]
+opacity = 0.95
+# opacity = 1
+padding.x = 5
+padding.y = 5
+
+[scrolling]
+history = 1000
+
+[general]
+import = ["~/.config/alacritty/catppuccin-mocha.toml"]
