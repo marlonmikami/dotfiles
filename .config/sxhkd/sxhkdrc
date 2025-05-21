@@ -11,11 +11,16 @@ XF86MonBrightnessDown
 
 #volume
 XF86Audio{Lower,Raise}Volume
-	amixer -M set "PGA1.0 1 Master" 5%{-,+}
+        pactl set-sink-volume 4 {-,+}5%
+	#amixer -M set "PGA1.0 1 Master" 5%{-,+}
+
+XF86AudioMute
+        pactl set-sink-mute 4 toggle
+
 
 # terminal emulator
 mod4 + Return
-	alacritty
+	xfce4-terminal
 
 # program launcher
 mod4 + @space
