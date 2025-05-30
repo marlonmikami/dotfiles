@@ -20,14 +20,14 @@ XF86AudioMute
 
 # terminal emulator
 mod4 + Return
-	xfce4-terminal
+        alacritty msg create-window || alacritty
 
 # program launcher
 mod4 + @space
 	rofi -show drun
 
 # program launcher
-alt + tab
+alt + Tab
 	rofi -show window
 
 # make sxhkd reload its configuration files:
@@ -63,12 +63,15 @@ mod4 + g
 #
 
 # set the window state
-mod4 + {t,shift + t,s,f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+#mod4 + {t,shift + t,s,f}
+#	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+mod4 + {f}
+	bspc node -t ~fullscreen
 
 # set the node flags
-mod4 + ctrl + {m,x,y,z}
-	bspc node -g {marked,locked,sticky,private}
+#mod4 + ctrl + {m,x,y,z}
+#	bspc node -g {marked,locked,sticky,private}
 
 #
 # focus/swap
@@ -79,26 +82,26 @@ mod4 + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
-mod4 + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
+#mod4 + {p,b,comma,period}
+#	bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous window in the current desktop
 mod4 + {_,shift + }c
 	bspc node -f {next,prev}.local.!hidden.window
 
 # focus the next/previous desktop in the current monitor
-mod4 + bracket{left,right}
-	bspc desktop -f {prev,next}.local
+#mod4 + bracket{left,right}
+#	bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
-mod4 + {grave,Tab}
-	bspc {node,desktop} -f last
+#mod4 + {grave,Tab}
+#	bspc {node,desktop} -f last
 
 # focus the older or newer node in the focus history
-mod4 + {o,i}
-	bspc wm -h off; \
-	bspc node {older,newer} -f; \
-	bspc wm -h on
+#mod4 + {o,i}
+#	bspc wm -h off; \
+#	bspc node {older,newer} -f; \
+#	bspc wm -h on
 
 # focus or send to the given desktop
 mod4 + {_,shift + }{1-9,0}
