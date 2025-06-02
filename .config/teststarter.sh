@@ -1,38 +1,42 @@
+#!/bin/bash
+
+
 # ========== INSTALLED THROUGH PACMAN ==========
-sudo pacman -S #terminus-font gucharmap 
+#sudo pacman -S \  
 
 # System
-bluetui bluez bluez-utils bluez-deprecated-tools   # Bluetooth
+sudo pacman -S --noconfirm \
+bluetui bluez bluez-utils bluez-deprecated-tools \ # Bluetooth
 alsa pulseaudio                                    # Audio
-acpi 
+#acpi 
 
 # Desktop
-xorg picom                                         # X server +
-bspwm sxhkd polybar                                # Window manager +
+#xorg picom                                         # X server +
+#bspwm sxhkd polybar                                # Window manager +
 
 # Fonts
-ttf-roboto-mono ttf-roboto-mono-nerd               # Default fonts
+#ttf-roboto-mono ttf-roboto-mono-nerd               # Default fonts
 #ttf-arphic-ukai ttf-arphic-uming ttf-sazanami      # Fonts for other languages
-noto-fonts                                         # Fonts for other languages
+#noto-fonts                                         # Fonts for other languages
 
 # Tools
-yazi eza 7zip ueberzugpp poppler                   # File manager + tools
-dua-cli                                            # Check free space on disk
-git github-cli                                     # Git + tools
-fzf                                                # Fuzzy finder
-tree                                               # Display directory as tree
-ncspot                                             # Spotify tui client 
-stow                                               # Tool for managing dotfiles 
-btop                                               # Resource monitor
-vim                                                # Text editor
-alacritty                                          # Terminal emulator
-rofi                                               # Application Launcher 
-feh                                                # Image viewer 
-w3m                                                # Terminal web browser
-fastfetch                                          # Fetch
+#yazi eza 7zip ueberzugpp poppler                   # File manager + tools
+#dua-cli                                            # Check free space on disk
+#git github-cli                                     # Git + tools
+#fzf                                                # Fuzzy finder
+#tree                                               # Display directory as tree
+#ncspot                                             # Spotify tui client 
+#stow                                               # Tool for managing dotfiles 
+#btop                                               # Resource monitor
+#vim                                                # Text editor
+#alacritty                                          # Terminal emulator
+#rofi                                               # Application Launcher 
+#feh                                                # Image viewer 
+#w3m                                                # Terminal web browser
+#fastfetch                                          # Fetch
 
 # Programming languages
-python3  
+#python3  
 
 # ========== INSTALLED THROUGH YAY ==========
 # yay -S blight

@@ -25,4 +25,9 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+export EDITOR='vim'
+
+# enable ble.sh
+#[[ $- == *i* ]] && source /usr/share/blesh/ble.sh
+
 # fastfetch

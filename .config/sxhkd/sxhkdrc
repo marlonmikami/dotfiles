@@ -2,6 +2,23 @@
 # wm independent hotkeys
 #
 
+# terminal emulator
+mod4 + Return
+        alacritty msg create-window || alacritty
+
+# vim wiki
+
+mod4 + n
+        alacritty msg create-window -e vim "$HOME/Notes/index.md" || alacritty -e vim "$HOME/Notes/index.md"
+
+# program launcher
+mod4 + @space
+	rofi -show drun
+
+# program launcher
+alt + Tab
+	rofi -show window
+
 # brightness
 XF86MonBrightnessUp
 	blight set +10%
@@ -14,21 +31,9 @@ XF86Audio{Lower,Raise}Volume
         pactl set-sink-volume 4 {-,+}5%
 	#amixer -M set "PGA1.0 1 Master" 5%{-,+}
 
+# mute
 XF86AudioMute
         pactl set-sink-mute 4 toggle
-
-
-# terminal emulator
-mod4 + Return
-        alacritty msg create-window || alacritty
-
-# program launcher
-mod4 + @space
-	rofi -show drun
-
-# program launcher
-alt + Tab
-	rofi -show window
 
 # make sxhkd reload its configuration files:
 mod4 + Escape

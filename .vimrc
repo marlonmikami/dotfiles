@@ -37,6 +37,7 @@ set wrap
 map j gj
 map k gk
 
+set clipboard^=unnamed,unnamedplus
 set laststatus=2
 
 " VIMWIKI related 
@@ -44,3 +45,7 @@ let g:vimwiki_global_ext = 0
 let g:vimwiki_list = [{ 'path': '~/Notes/',
                       \ 'syntax': 'markdown',
                       \ 'ext': 'md'}]
+
+
+" --- Abreviations ---
+:iab mdt ## <CR>* Other names: <CR><ESC>xxi* Tradition: <CR><ESC>xxi* For whom: <CR><ESC>xxi* Effects: <ESC>04k$i

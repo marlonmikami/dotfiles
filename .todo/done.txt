@@ -1,0 +1,7 @@
+x 2025-06-01 fix brightness keys @pcsetup
+x 2025-06-01 fix mute key @pcsetup
+x 2025-06-01 set up bluetooth @pcsetup
+x 2025-06-01 fix volume keys @pcsetup
+x 2025-06-01 fix tap to click @pcsetup
+x 2025-06-01 set up polybar @pcsetup
+x 2025-06-01 terminal network manager @pcsetup
