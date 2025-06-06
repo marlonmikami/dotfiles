@@ -1,7 +1,7 @@
 
 [font]
-normal.family = "Roboto Mono" 
-normal.style = "Medium"
+normal.family = "JetBrainsMono" 
+normal.style = "Regular"
 size = 8
 
 [window]

@@ -1,81 +1,64 @@
-# ========== INSTALLED THROUGH PACMAN ==========
-sudo pacman -S #terminus-font gucharmap 
+#!/bin/bash
 
-# System
-bluetui bluez bluez-utils bluez-deprecated-tools   # Bluetooth
-alsa pulseaudio                                    # Audio
-acpi 
+# ========== PACMAN ==========
+echo "Installing packages through pacman"
 
-# Desktop
-xorg picom                                         # X server +
-bspwm sxhkd polybar                                # Window manager +
+echo "Installing hardware related packages and tools"
+sudo pacman -S --noconfirm  bluetui bluez bluez-utils bluez-deprecated-tools alsa pipewire pipewire-audio pipewire-pulse wireplumber acpi impala 
 
-# Fonts
-ttf-roboto-mono ttf-roboto-mono-nerd               # Default fonts
-#ttf-arphic-ukai ttf-arphic-uming ttf-sazanami      # Fonts for other languages
-noto-fonts                                         # Fonts for other languages
+echo "Installing desktop related packages and tools"
+sudo pacman -S --noconfirm xorg picom bspwm sxhkd polybar 
 
-# Tools
-yazi eza 7zip ueberzugpp poppler                   # File manager + tools
-dua-cli                                            # Check free space on disk
-git github-cli                                     # Git + tools
-fzf                                                # Fuzzy finder
-tree                                               # Display directory as tree
-ncspot                                             # Spotify tui client 
-stow                                               # Tool for managing dotfiles 
-btop                                               # Resource monitor
-vim                                                # Text editor
-alacritty                                          # Terminal emulator
-rofi                                               # Application Launcher 
-feh                                                # Image viewer 
-w3m                                                # Terminal web browser
-fastfetch                                          # Fetch
+echo "Installing fonts"
+sudo pacman -S --noconfirm ttf-roboto-mono ttf-roboto-mono-nerd noto-fonts 
 
-# Programming languages
-python3  
+echo "Installing tools"
+sudo pacman -S --noconfirm yazi eza p7zip ueberzugpp poppler bat dua-cli git github-cli fzf ncspot stow btop gvim alacritty rofi feh w3m fastfetch aspell aspell-en zathura zathura-pdf-poppler yt-dlp
 
-# ========== INSTALLED THROUGH YAY ==========
-# yay -S blight
+echo "Installing programming stuff"
+sudo pacman -S --noconfirm python3 python-pip
 
-# ========== INSTALLED THROUGH GIT ==========
+
+# ========== YAY ==========
+echo "Installing packages through yay"
+yay -S blight
+
+# ========== GIT ==========
+echo "Downloading programs through git"
+
 # Chrultrabook audio fix 
-# git clone https://github.com/WeirdTreeThing/chromebook-linux-audio.git
-# cd chromebook-linux-audio
-# ./setup-audio
+echo "Downloading the chrultrabook audio fix"
+git clone https://github.com/WeirdTreeThing/chromebook-linux-audio.git
+./chromebook-linux-audio/setup-audio
 
-# vimwiki:
-# git clone https://github.com/vimwiki/vimwiki.git ~/.vim/pack/plugins/start/vimwiki
-# vim -c 'helptags ~/.vim/pack/plugins/start/vimwiki/doc' -c quit
+# VimWiki:
+echo "Downloading VimWiki"
+git clone https://github.com/vimwiki/vimwiki.git ~/.vim/pack/plugins/start/vimwiki
+vim -c 'helptags ~/.vim/pack/plugins/start/vimwiki/doc' -c quit
+
 
 # ========== SETUP ==========
+echo "Aditional setup"
+
 # Setup 1.1.1.3 DNS
-#echo -e "nameserver 1.1.1.1\nnameserver 1.0.0.1" | sudo tee /etc/resolv.conf
+echo "Setup 1.1.1.3 DNS"
+echo -e "nameserver 1.1.1.1\nnameserver 1.0.0.1" | sudo tee /etc/resolv.conf
 
 # Setup case insensitive
-# if [ ! -a ~/.inputrc ]; then echo '$include /etc/inputrc' > ~/.inputrc; fi
+echo "Setup case insensitive terminal"
+if [ ! -a ~/.inputrc ]; then echo '$include /etc/inputrc' > ~/.inputrc; fi
 
 
-# xev to show the keys being pressed
 # to fix trackpad: /etc/X11/xorg.conf.d/40-libinput.conf 
 
+# To setup auto login
+#/etc/systemd/system/getty@tty1.service.d/autologin.conf
+#[Service]
+#ExecStart=
+#ExecStart=-/sbin/agetty -o '-p -f -- \\u' --noclear --autologin <username> %I $TERM
 
-# gh auth login
-
-
-# If ~/.inputrc doesn't exist yet: First include the original /etc/inputrc
-# so it won't get overriden
-# if [ ! -a ~/.inputrc ]; then echo '$include /etc/inputrc' > ~/.inputrc; fi
-
-# Add shell-option to ~/.inputrc to enable case-insensitive tab completion
-# echo 'set completion-ignore-case On' >> ~/.inputrc
-
-
-# sudo systemctl enable bluetooth
-
-
-
-# Edit /etc/vconsole.conf and add FONT=ter-132b
-
-
-
-# To Try: fish zellij gitui du-dust dua yazi wiki-tui zoxide eza
+# Auto mount USB drive
+# sudo blkid /dev/sda1 | awk -F'"' '{print $6}'
+# sudo mount -U D25A-9DB8 /media/usb-drive/
+# add to /etc/fstab
+# UUID=D25A-9DB8 /media/usb-drive/ auto rw,user,exec,umask=000 0 0

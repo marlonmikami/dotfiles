@@ -5,3 +5,5 @@ x 2025-06-01 fix volume keys @pcsetup
 x 2025-06-01 fix tap to click @pcsetup
 x 2025-06-01 set up polybar @pcsetup
 x 2025-06-01 terminal network manager @pcsetup
+x 2025-06-05 change mouse cursor @pcsetup
+x 2025-06-05 setup stow to manage dotfiles @pcsetup

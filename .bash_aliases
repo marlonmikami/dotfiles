@@ -1,4 +1,4 @@
-alias ls='eza --color=always --icons=always --tree --level=1'
+alias ls='eza --color=always --icons=always --oneline'
 alias tree='eza --color=always --icons=always --tree'
 alias cat='bat'
 alias wifi='impala'
@@ -7,6 +7,7 @@ alias notes='vim $HOME/Notes/index.md'
 alias fehbg='feh --bg-scale'
 alias t='todo.sh'
 alias tl='todo.sh ls @life'
+alias abnt2='setxkbmap -model abnt2 -layout br'
 
 # Easy access to configuration files
 alias vimrc='vim ~/.vimrc'

@@ -23,11 +23,13 @@ bspc rule -a Chromium desktop='^2'
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
+bspc rule -a Galculator state=floating
 
 bspc config focused_border_color \#ddc7a1
 bspc config normal_border_color \#1d2021
 
 sh /home/marlon/.fehbg
+xsetroot -cursor_name arrow
 
 
 

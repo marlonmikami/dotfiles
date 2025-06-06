@@ -6,6 +6,9 @@
 mod4 + Return
         alacritty msg create-window || alacritty
 
+mod4 + shift + Return
+        bspc rule -a \* -o state=floating && alacritty msg create-window || alacritty
+
 # vim wiki
 
 mod4 + n
