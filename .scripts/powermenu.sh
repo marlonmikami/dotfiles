@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+# Options
+shutdown=' Shutdown'
+reboot=' Reboot'
+cancel=' Cancel'
+yes=' Yes'
+no=' No'
+
+# Shows rofi with the power options
+run_rofi() {
+    echo -e "$shutdown\n$reboot\n$cancel" | rofi -dmenu -p "Power Menu" \
+    -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 250px;}' \
+    -theme-str 'listview {lines: 3;}'
+}
+
+# Shows a confirmation dialog
+confirm_cmd() {
+	echo -e "$yes\n$no" | rofi -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 250px;}' \
+		-theme-str 'mainbox {children: [ "message", "listview" ];}' \
+		-theme-str 'listview {columns: 2; lines: 1;}' \
+		-theme-str 'element-text {horizontal-align: 0.5;}' \
+		-theme-str 'textbox {horizontal-align: 0.5;}' \
+		-dmenu \
+		-p 'Confirmation' \
+		-mesg 'Are you Sure?' 
+}
+
+# shutdown/reboot routine
+shutdown_routine() {
+    if [ "$(confirm_cmd)" == "$yes" ]; then
+        # Closes chrome before shutting down
+        pkill --oldest chrome
+        for (( i = 3; i>= 1; i-- )); do
+            dunstctl close
+            dunstify "$1 in $i"
+            sleep 1
+        done
+    fi
+    $2
+}
+
+ 
+
+chosen="$(run_rofi)" 
+case ${chosen} in
+    $shutdown)
+        shutdown_routine "Shutting down" "shutdown"
+    ;;
+    $reboot)
+        shutdown_routine "Rebooting" "reboot"
+    ;;
+    $cancel)
+        echo "Cancel"
+    ;;
+esac
