@@ -7,3 +7,9 @@ x 2025-06-01 set up polybar @pcsetup
 x 2025-06-01 terminal network manager @pcsetup
 x 2025-06-05 change mouse cursor @pcsetup
 x 2025-06-05 setup stow to manage dotfiles @pcsetup
+x 2025-06-06 download calculator @pcsetup
+x 2025-06-06 fix volume keys (pipewire) @pcsetup
+x 2025-06-09 figure out notification stuff @pcsetup
+x 2025-06-09 make script to save notes @pcsetup
+x 2025-06-09 confirm before poweroff @pcsetup
+x 2025-06-10 aplly shutdown script to power key @pcsetup

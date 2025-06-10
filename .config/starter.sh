@@ -13,7 +13,7 @@ echo "Installing fonts"
 sudo pacman -S --noconfirm ttf-roboto-mono ttf-roboto-mono-nerd noto-fonts 
 
 echo "Installing tools"
-sudo pacman -S --noconfirm yazi eza p7zip ueberzugpp poppler bat dua-cli git github-cli fzf ncspot stow btop gvim alacritty rofi feh w3m fastfetch aspell aspell-en zathura zathura-pdf-poppler yt-dlp
+sudo pacman -S --noconfirm yazi eza p7zip ueberzugpp poppler bat dua-cli git github-cli fzf ncspot stow btop gvim alacritty rofi feh w3m fastfetch aspell aspell-en zathura zathura-pdf-poppler yt-dlp maim libnotify notify-osd dunst fd zoxide 
 
 echo "Installing programming stuff"
 sudo pacman -S --noconfirm python3 python-pip
@@ -21,7 +21,7 @@ sudo pacman -S --noconfirm python3 python-pip
 
 # ========== YAY ==========
 echo "Installing packages through yay"
-yay -S blight
+yay -S blight todotxt google-chrome
 
 # ========== GIT ==========
 echo "Downloading programs through git"
@@ -62,3 +62,6 @@ if [ ! -a ~/.inputrc ]; then echo '$include /etc/inputrc' > ~/.inputrc; fi
 # sudo mount -U D25A-9DB8 /media/usb-drive/
 # add to /etc/fstab
 # UUID=D25A-9DB8 /media/usb-drive/ auto rw,user,exec,umask=000 0 0
+
+# Change power key behavior
+sudo bash -c "echo \"HandlePowerKey=ignore\" >> /etc/systemd/logind.conf"

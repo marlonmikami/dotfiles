@@ -6,7 +6,7 @@
 mod4 + Return
         alacritty msg create-window || alacritty
 
-mod4 + shift + Return
+mod4 + alt + Return
         bspc rule -a \* -o state=floating && alacritty msg create-window || alacritty
 
 # vim wiki
@@ -18,9 +18,20 @@ mod4 + n
 mod4 + @space
 	rofi -show drun
 
-# program launcher
+# power menu
+XF86PowerOff
+    . $HOME/.scripts/powermenu.sh
+
+# window switcher
 alt + Tab
 	rofi -show window
+
+# take screenshot
+mod4 + s
+        maim ~/Pictures/$(date +%s).png && dunstify "Screenshot taken"
+
+mod4 + alt + s
+        maim -s ~/Pictures/$(date +%s).png && dunstify "Screenshot taken"
 
 # brightness
 XF86MonBrightnessUp
@@ -31,12 +42,14 @@ XF86MonBrightnessDown
 
 #volume
 XF86Audio{Lower,Raise}Volume
-        pactl set-sink-volume 4 {-,+}5%
+        wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%{-,+}
+        #pactl set-sink-volume 4 {-,+}5%
 	#amixer -M set "PGA1.0 1 Master" 5%{-,+}
 
 # mute
 XF86AudioMute
-        pactl set-sink-mute 4 toggle
+        wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+        #pactl set-sink-mute 4 toggle
 
 # make sxhkd reload its configuration files:
 mod4 + Escape

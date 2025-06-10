@@ -1,17 +1,24 @@
-alias ls='eza --color=always --icons=always --oneline'
+# Replacements
+alias ls='eza --color=always --icons=always'
 alias tree='eza --color=always --icons=always --tree'
 alias cat='bat'
+alias cd='z'
+alias find='fd'
+
+# Shortcuts
 alias wifi='impala'
 alias bt='bluetui'
 alias notes='vim $HOME/Notes/index.md'
-alias fehbg='feh --bg-scale'
+alias fehbg='feh --bg-fill --no-fehbg'
 alias t='todo.sh'
 alias tl='todo.sh ls @life'
 alias abnt2='setxkbmap -model abnt2 -layout br'
 
 # Easy access to configuration files
 alias vimrc='vim ~/.vimrc'
+alias bashrc='vim ~/.bashrc'
 alias config_vim='vim ~/.vimrc'
+alias config_bash='vim ~/.bashrc'
 alias config_alias='vim ~/.bash_aliases ; . ~/.bash_aliases'
 alias config_bspwm='vim ~/.config/bspwm/bspwmrc ; bspc wm -r'
 alias config_sxhkd='vim ~/.config/sxhkd/sxhkdrc ; pkill -USR1 -x sxhkd'
