@@ -10,9 +10,11 @@ alias wifi='impala'
 alias bt='bluetui'
 alias notes='vim $HOME/Notes/index.md'
 alias fehbg='feh --bg-fill --no-fehbg'
+alias a='aspell -a'
 alias t='todo.sh'
 alias tl='todo.sh ls @life'
 alias abnt2='setxkbmap -model abnt2 -layout br'
+alias sprite='(LibreSprite.AppImage &) && exit'
 
 # Easy access to configuration files
 alias vimrc='vim ~/.vimrc'

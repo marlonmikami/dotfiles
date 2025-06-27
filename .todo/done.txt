@@ -13,3 +13,5 @@ x 2025-06-09 figure out notification stuff @pcsetup
 x 2025-06-09 make script to save notes @pcsetup
 x 2025-06-09 confirm before poweroff @pcsetup
 x 2025-06-10 aplly shutdown script to power key @pcsetup
+x 2025-06-13 watch violet evergarden movies @life
+x 2025-06-15 add bell hooks book to list of books read @life

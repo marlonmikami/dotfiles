@@ -1,5 +1,33 @@
 #!/bin/bash
 
+backup_commit() {
+    echo "Saving notes through git"
+    full_date=$(date -I)
+    $(git --git-dir $HOME/Notes/.git --work-tree=$HOME/Notes add .)
+    $(git --git-dir $HOME/Notes/.git --work-tree=$HOME/Notes commit -m "Notes update $full_date")
+    $(git --git-dir $HOME/Notes/.git --work-tree=$HOME/Notes push)
+}
+
+backup_local() {
+    echo "Saving notes to the usb drive"
+    dir_integer=1
+    backup_dir=$(get_backup_dir -$dir_integer)
+    while [ -d $backup_dir ];
+    do
+        let dir_integer++
+        backup_dir=$(get_backup_dir -$dir_integer)
+    done
+    echo $backup_dir
+    #mkdir $backup_dir 
+    cp -r $HOME/Notes/ $backup_dir
+}
+
+get_backup_dir() {
+    full_date=$(date +%Y%m%d)$1
+    echo $HOME/usb-drive/notes-backup/$full_date
+}
+
+
 
 # Check if the Notes folder exists in Home
 if [ ! -d $HOME/Notes ]; then
@@ -34,32 +62,6 @@ else
     backup_commit
 fi
 
-backup_commit() {
-    echo "Saving notes through git"
-    full_date=$(date -I)
-    $(git --git-dir $HOME/Notes/.git --work-tree=$HOME/Notes add .)
-    $(git --git-dir $HOME/Notes/.git --work-tree=$HOME/Notes commit -m "Notes update $full_date")
-    $(git --git-dir $HOME/Notes/.git --work-tree=$HOME/Notes push)
-}
-
-backup_local() {
-    echo "Saving notes to the usb drive"
-    dir_integer=1
-    backup_dir=$(get_backup_dir -$dir_integer)
-    while [ -d $backup_dir ];
-    do
-        let dir_integer++
-        backup_dir=$(get_backup_dir -$dir_integer)
-    done
-    echo $backup_dir
-    #mkdir $backup_dir 
-    cp -r $HOME/Notes/ $backup_dir
-}
-
-get_backup_dir() {
-    full_date=$(date +%Y%m%d)$1
-    echo $HOME/usb-drive/notes-backup/$full_date
-}
 
 
 #echo "reached end of file"

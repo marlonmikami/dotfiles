@@ -10,9 +10,11 @@ mod4 + alt + Return
         bspc rule -a \* -o state=floating && alacritty msg create-window || alacritty
 
 # vim wiki
-
 mod4 + n
         alacritty msg create-window -e vim "$HOME/Notes/index.md" || alacritty -e vim "$HOME/Notes/index.md"
+
+mod4 + alt + n
+        alacritty msg create-window -e vim "$HOME/Notes/scratchpad.md" || alacritty -e vim "$HOME/Notes/scratchpad.md"
 
 # program launcher
 mod4 + @space

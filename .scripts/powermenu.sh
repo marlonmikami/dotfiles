@@ -36,8 +36,10 @@ shutdown_routine() {
             dunstify "$1 in $i"
             sleep 1
         done
+        $2
+    else
+        return 0
     fi
-    $2
 }
 
  
@@ -46,11 +48,13 @@ chosen="$(run_rofi)"
 case ${chosen} in
     $shutdown)
         shutdown_routine "Shutting down" "shutdown"
+        return 0
     ;;
     $reboot)
         shutdown_routine "Rebooting" "reboot"
+        return 0
     ;;
     $cancel)
-        echo "Cancel"
+        return 0
     ;;
 esac
