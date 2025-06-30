@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 # Options
-shutdown=' Shutdown'
-reboot=' Reboot'
-cancel=' Cancel'
-yes=' Yes'
-no=' No'
+shutdown=' Shutdown'
+reboot='󰑓 Reboot'
+cancel=' Cancel'
+yes=' Yes'
+no=' No'
 
 # Shows rofi with the power options
 run_rofi() {

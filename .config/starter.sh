@@ -4,13 +4,13 @@
 echo "Installing packages through pacman"
 
 echo "Installing hardware related packages and tools"
-sudo pacman -S --noconfirm  bluetui bluez bluez-utils bluez-deprecated-tools alsa pipewire pipewire-audio pipewire-pulse wireplumber acpi impala 
+sudo pacman -S --noconfirm  linux-firmware bluetui bluez bluez-utils bluez-deprecated-tools pipewire pipewire-audio pipewire-pulse wireplumber acpi impala 
 
 echo "Installing desktop related packages and tools"
 sudo pacman -S --noconfirm xorg picom bspwm sxhkd polybar 
 
 echo "Installing fonts"
-sudo pacman -S --noconfirm ttf-roboto-mono ttf-roboto-mono-nerd noto-fonts 
+sudo pacman -S --noconfirm ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-roboto-mono ttf-roboto-mono-nerd noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
 
 echo "Installing tools"
 sudo pacman -S --noconfirm yazi eza p7zip ueberzugpp poppler bat dua-cli git github-cli fzf ncspot stow btop gvim alacritty rofi feh w3m fastfetch aspell aspell-en zathura zathura-pdf-poppler yt-dlp maim libnotify notify-osd dunst fd zoxide 
@@ -27,22 +27,25 @@ yay -S blight todotxt google-chrome
 echo "Downloading programs through git"
 
 # Chrultrabook audio fix 
-echo "Downloading the chrultrabook audio fix"
-git clone https://github.com/WeirdTreeThing/chromebook-linux-audio.git
-./chromebook-linux-audio/setup-audio
+#echo "Downloading the chrultrabook audio fix"
+#git clone https://github.com/WeirdTreeThing/chromebook-linux-audio.git
+#./chromebook-linux-audio/setup-audio
 
-# VimWiki:
+# VimWiki
 echo "Downloading VimWiki"
 git clone https://github.com/vimwiki/vimwiki.git ~/.vim/pack/plugins/start/vimwiki
 vim -c 'helptags ~/.vim/pack/plugins/start/vimwiki/doc' -c quit
 
+# Alacritty Themes
+mkdir -p ~/.config/alacritty/themes
+git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
 
 # ========== SETUP ==========
 echo "Aditional setup"
 
 # Setup 1.1.1.3 DNS
-echo "Setup 1.1.1.3 DNS"
-echo -e "nameserver 1.1.1.1\nnameserver 1.0.0.1" | sudo tee /etc/resolv.conf
+#echo "Setup 1.1.1.3 DNS"
+#echo -e "nameserver 1.1.1.1\nnameserver 1.0.0.1" | sudo tee /etc/resolv.conf
 
 # Setup case insensitive
 echo "Setup case insensitive terminal"
@@ -65,3 +68,9 @@ if [ ! -a ~/.inputrc ]; then echo '$include /etc/inputrc' > ~/.inputrc; fi
 
 # Change power key behavior
 sudo bash -c "echo \"HandlePowerKey=ignore\" >> /etc/systemd/logind.conf"
+
+# Start services
+systemctl start bluetooth.service
+
+# Make my scripts executable
+chmod +x $HOME/.scripts/*

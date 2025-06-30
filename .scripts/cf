@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+echo $1
+
+case $1 in
+    "aliases")
+        vim $HOME/.bash_aliases 
+        . $HOME/.bash_aliases
+    ;;
+    "alacritty")
+        vim $HOME/.config/alacritty/alacritty.toml
+    ;;
+    "bash")
+        vim $HOME/.bashrc
+    ;;
+    "bspwm")
+        vim $HOME/.config/bspwm/bspwmrc 
+        bspc wm -r
+    ;;
+    "polybar")
+        vim $HOME/.config/polybar/config.ini
+    ;;
+    "sxhkd")
+        vim $HOME/.config/sxhkd/sxhkdrc
+	pkill -USR1 -x sxhkd
+    ;;
+    "vim")
+        vim $HOME/.vimrc
+    ;;
+esac

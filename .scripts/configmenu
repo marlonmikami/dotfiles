@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# Options
+aliases=" aliases"
+alacritty=" alacritty"
+bash="󱆃 bash"
+bspwm=" bspwm"
+polybar=" polybar"
+sxhkd=" sxhkd"
+vim=" vim"
+
+
+# Shows rofi with the options
+run_rofi() {
+    echo -e "$aliases\n$alacritty\n$bash\n$bspwm\n$polybar\n$sxhkd\n$vim" | rofi -dmenu -p "Configure" \
+    -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 250px;}' \
+    -theme-str 'listview {lines: 7;}'
+}
+
+chosen="$(run_rofi)" 
+
+if [ ! -z "${chosen}" ]; then
+    choice="${chosen:2}"
+    alacritty msg create-window -e sh $HOME/.scripts/cf $choice || alacritty -e sh $HOME/.scripts/cf $choice
+fi
