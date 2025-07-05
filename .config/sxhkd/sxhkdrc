@@ -2,23 +2,15 @@
 # wm independent hotkeys
 #
 
-# terminal emulator
-mod4 + Return
-        alacritty msg create-window || alacritty
+# === ROFI ==================
 
-mod4 + alt + Return
-        bspc rule -a \* -o state=floating && alacritty msg create-window || alacritty
-
-# vim wiki
-mod4 + n
-        alacritty msg create-window -e vim "$HOME/Notes/index.md" || alacritty -e vim "$HOME/Notes/index.md"
-
-mod4 + alt + n
-        alacritty msg create-window -e vim "$HOME/Notes/scratchpad.md" || alacritty -e vim "$HOME/Notes/scratchpad.md"
+# bookmark manager
+mod4 + b 
+    bookmarkmenu
 
 # program launcher
 mod4 + @space
-	rofi -show drun
+    launcher
 
 # power menu
 XF86PowerOff
@@ -26,60 +18,77 @@ XF86PowerOff
 
 # window switcher
 alt + Tab
-	rofi -show window
+    rofi -show window
+
+# === Applications ==========
+
+# terminal emulator
+mod4 + Return
+    alacritty msg create-window || alacritty
+
+mod4 + alt + Return
+    bspc rule -a \* -o state=floating && alacritty msg create-window || alacritty
+
+# vim wiki
+mod4 + n
+    alacritty msg create-window -e vim "$HOME/Notes/index.md" || alacritty -e vim "$HOME/Notes/index.md"
+
+mod4 + alt + n
+    alacritty msg create-window -e vim "$HOME/Notes/scratchpad.md" || alacritty -e vim "$HOME/Notes/scratchpad.md"
+
+# === Shortcuts =============
 
 # take screenshot
 mod4 + s
-        maim ~/Pictures/$(date +%s).png && dunstify "Screenshot taken"
+    maim ~/Pictures/$(date +%s).png && dunstify "Screenshot taken"
 
 mod4 + alt + s
-        maim -s ~/Pictures/$(date +%s).png && dunstify "Screenshot taken"
+    maim -s ~/Pictures/$(date +%s).png && dunstify "Screenshot taken"
 
 # brightness
 XF86MonBrightnessUp
-	blight set +10%
+    blight set -10%   # The keys are reversed on this laptop
 
 XF86MonBrightnessDown
-	blight set -10%
+    blight set +10%   # The keys are reversed on this laptop
 
 #volume
 XF86Audio{Lower,Raise}Volume
-        wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%{-,+}
-        #pactl set-sink-volume 4 {-,+}5%
-	#amixer -M set "PGA1.0 1 Master" 5%{-,+}
+    volumenotification {down,up}
 
 # mute
 XF86AudioMute
-        wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-        #pactl set-sink-mute 4 toggle
+    wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
-# make sxhkd reload its configuration files:
+# === BSPWM =================
+
+# restart bspwm
 mod4 + Escape
-	pkill -USR1 -x sxhkd
+    bspc wm -r
 
-#
-# bspwm hotkeys
-#
+# Toogle gap size
+mod4 + g
+    [ $(bspc config window_gap) = 2 ] && bspc config window_gap 20 || bspc config window_gap 2
 
 # quit/restart bspwm
 mod4 + alt + {q,r}
-	bspc {quit,wm -r}
+    bspc {quit,wm -r}
 
 # close and kill
 mod4 + {_,shift + }w
-	bspc node -{c,k}
+    bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
 mod4 + m
-	bspc desktop -l next
+    bspc desktop -l next
 
 # send the newest marked node to the newest preselected node
 mod4 + y
-	bspc node newest.marked.local -n newest.!automatic.local
+    bspc node newest.marked.local -n newest.!automatic.local
 
 # swap the current node and the biggest window
-mod4 + g
-	bspc node -s biggest.window
+#mod4 + g
+	#bspc node -s biggest.window
 
 #
 # state/flags
@@ -89,8 +98,8 @@ mod4 + g
 #mod4 + {t,shift + t,s,f}
 #	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
-mod4 + {f}
-	bspc node -t ~fullscreen
+mod4 + f
+    bspc node -t ~fullscreen
 
 # set the node flags
 #mod4 + ctrl + {m,x,y,z}
@@ -102,7 +111,7 @@ mod4 + {f}
 
 # focus the node in the given direction
 mod4 + {_,shift + }{h,j,k,l}
-	bspc node -{f,s} {west,south,north,east}
+    bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
 #mod4 + {p,b,comma,period}
@@ -110,7 +119,7 @@ mod4 + {_,shift + }{h,j,k,l}
 
 # focus the next/previous window in the current desktop
 mod4 + {_,shift + }c
-	bspc node -f {next,prev}.local.!hidden.window
+    bspc node -f {next,prev}.local.!hidden.window
 
 # focus the next/previous desktop in the current monitor
 #mod4 + bracket{left,right}
@@ -128,7 +137,7 @@ mod4 + {_,shift + }c
 
 # focus or send to the given desktop
 mod4 + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+    bspc {desktop -f,node -d} '^{1-9,10}'
 
 #
 # preselect
@@ -136,19 +145,19 @@ mod4 + {_,shift + }{1-9,0}
 
 # preselect the direction
 mod4 + ctrl + {h,j,k,l}
-	bspc node -p {west,south,north,east}
+    bspc node -p {west,south,north,east}
 
 # preselect the ratio
 mod4 + ctrl + {1-9}
-	bspc node -o 0.{1-9}
+    bspc node -o 0.{1-9}
 
 # cancel the preselection for the focused node
 mod4 + ctrl + space
-	bspc node -p cancel
+    bspc node -p cancel
 
 # cancel the preselection for the focused desktop
 mod4 + ctrl + shift + space
-	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+    bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 #
 # move/resize
@@ -156,12 +165,12 @@ mod4 + ctrl + shift + space
 
 # expand a window by moving one of its side outward
 mod4 + alt + {h,j,k,l}
-	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+    bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
 # contract a window by moving one of its side inward
 mod4 + alt + shift + {h,j,k,l}
-	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+    bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 # move a floating window
 mod4 + {Left,Down,Up,Right}
-	bspc node -v {-20 0,0 20,0 -20,20 0}
+    bspc node -v {-20 0,0 20,0 -20,20 0}

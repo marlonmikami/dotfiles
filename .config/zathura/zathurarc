@@ -3,3 +3,10 @@ set recolor-keephue
 set recolor-lightcolor \#282828  # paper color
 set default-bg \#141617          # background color
 set recolor-darkcolor "#ddc7a1"  # writing color
+
+# zoom and scroll step size
+#set zoom-step 20
+#set scroll-step 80
+
+# copy selection to system clipboard
+set selection-clipboard clipboard

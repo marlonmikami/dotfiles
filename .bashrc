@@ -5,7 +5,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$ '
 
 # Load .bash_aliases
@@ -14,6 +13,7 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 export EDITOR='vim'
+export PATH=$PATH:$HOME/.scripts
 
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --bash)"
@@ -23,5 +23,4 @@ eval "$(zoxide init bash)"
 
 #eval "$(register-python-argcomplete pipx)"
 
-# Created by `pipx` on 2025-06-08 16:41:42
 export PATH="$PATH:/home/marlon/.local/bin"

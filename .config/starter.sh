@@ -4,24 +4,24 @@
 echo "Installing packages through pacman"
 
 echo "Installing hardware related packages and tools"
-sudo pacman -S --noconfirm  linux-firmware bluetui bluez bluez-utils bluez-deprecated-tools pipewire pipewire-audio pipewire-pulse wireplumber acpi impala 
+sudo pacman -S --noconfirm acpi bluetui bluez bluez-deprecated-tools bluez-utils impala linux-firmware pipewire pipewire-audio pipewire-pulse wireplumber
 
 echo "Installing desktop related packages and tools"
-sudo pacman -S --noconfirm xorg picom bspwm sxhkd polybar 
+sudo pacman -S --noconfirm bspwm picom polybar sxhkd xorg
 
 echo "Installing fonts"
-sudo pacman -S --noconfirm ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-roboto-mono ttf-roboto-mono-nerd noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
+sudo pacman -S --noconfirm noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-roboto-mono ttf-roboto-mono-nerd
 
 echo "Installing tools"
-sudo pacman -S --noconfirm yazi eza p7zip ueberzugpp poppler bat dua-cli git github-cli fzf ncspot stow btop gvim alacritty rofi feh w3m fastfetch aspell aspell-en zathura zathura-pdf-poppler yt-dlp maim libnotify notify-osd dunst fd zoxide 
+sudo pacman -S --noconfirm alacritty aspell aspell-en bat btop dua-cli dunst eza fastfetch fd feh fzf git github-cli gvim libnotify maim ncspot notify-osd nsxiv p7zip poppler rofi stow ueberzugpp w3m yazi yt-dlp zathura zathura-pdf-mupdf zoxide
+
+echo "Installing gtk stuff"
+lsudo pacman -S --noconfirm thunar tumbler xappearance-gtk4
 
 echo "Installing programming stuff"
 sudo pacman -S --noconfirm python3 python-pip
 
 
-# ========== YAY ==========
-echo "Installing packages through yay"
-yay -S blight todotxt google-chrome
 
 # ========== GIT ==========
 echo "Downloading programs through git"
@@ -31,14 +31,27 @@ echo "Downloading programs through git"
 #git clone https://github.com/WeirdTreeThing/chromebook-linux-audio.git
 #./chromebook-linux-audio/setup-audio
 
+# Yay
+echo "Downloading yay"
+sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si
+
 # VimWiki
 echo "Downloading VimWiki"
 git clone https://github.com/vimwiki/vimwiki.git ~/.vim/pack/plugins/start/vimwiki
 vim -c 'helptags ~/.vim/pack/plugins/start/vimwiki/doc' -c quit
 
 # Alacritty Themes
+echo "Downloading alacritty themes"
 mkdir -p ~/.config/alacritty/themes
 git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+
+# Vim gruvbox theme
+echo "Downloading the vim gruvbox theme"
+git clone https://github.com/morhetz/gruvbox.git ~/.vim/pack/default/start/gruvbox
+
+# ========== YAY ==========
+echo "Installing packages through yay"
+yay -S blight todotxt google-chrome coolercontrol-bin
 
 # ========== SETUP ==========
 echo "Aditional setup"
@@ -74,3 +87,9 @@ systemctl start bluetooth.service
 
 # Make my scripts executable
 chmod +x $HOME/.scripts/*
+
+# Themes
+#https://www.xfce-look.org/p/1681313
+#https://www.gnome-look.org/p/1961046/
+#https://www.gnome-look.org/p/1932768
+#For anyone that stumbles upon this in the future. I had to copy the theme folder (in my case "Breeze") from ~/.local/share/icons/ to /usr/share/icons/. After that, edit the file /usr/share/icons/default/index.theme with the name of your theme as shown below.

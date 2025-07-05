@@ -4,6 +4,7 @@ alias tree='eza --color=always --icons=always --tree'
 alias cat='bat'
 alias cd='z'
 alias find='fd'
+alias cal='calcol'
 
 # Shortcuts
 alias wifi='impala'
@@ -14,19 +15,21 @@ alias a='aspell -a'
 alias t='todo.sh'
 alias tl='todo.sh ls @life'
 alias abnt2='setxkbmap -model abnt2 -layout br'
-alias sprite='(LibreSprite.AppImage &) && exit'
+alias sprite='(LibreSprite &) && exit'
+alias grep='grep --color=auto'
 
 # Easy access to configuration files
 alias vimrc='vim ~/.vimrc'
 alias bashrc='vim ~/.bashrc'
-alias config_vim='vim ~/.vimrc'
-alias config_bash='vim ~/.bashrc'
-alias config_alias='vim ~/.bash_aliases ; . ~/.bash_aliases'
-alias config_bspwm='vim ~/.config/bspwm/bspwmrc ; bspc wm -r'
-alias config_sxhkd='vim ~/.config/sxhkd/sxhkdrc ; pkill -USR1 -x sxhkd'
-alias config_polybar='vim ~/.config/polybar/config.ini'
-alias config_xinit='vim ~/.xinitrc'
-alias config_starter='vim ~/.config/starter.sh'
+#alias config_vim='vim ~/.vimrc'
+#alias config_bash='vim ~/.bashrc'
+#alias config_alias='vim ~/.bash_aliases ; . ~/.bash_aliases'
+#alias config_alacritty='vim ~/.config/alacritty/alacritty.toml'
+#alias config_bspwm='vim ~/.config/bspwm/bspwmrc ; bspc wm -r'
+#alias config_sxhkd='vim ~/.config/sxhkd/sxhkdrc ; pkill -USR1 -x sxhkd'
+#alias config_polybar='vim ~/.config/polybar/config.ini'
+#alias config_xinit='vim ~/.xinitrc'
+#alias config_starter='vim ~/.config/starter.sh'
 
 # Function to let yazi exit on the directory you close it at
 function y() {
