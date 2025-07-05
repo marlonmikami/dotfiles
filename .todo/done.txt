@@ -15,3 +15,16 @@ x 2025-06-09 confirm before poweroff @pcsetup
 x 2025-06-10 aplly shutdown script to power key @pcsetup
 x 2025-06-13 watch violet evergarden movies @life
 x 2025-06-15 add bell hooks book to list of books read @life
+x 2025-06-30 schedule dentist (cleaning) @life
+x 2025-06-30 schedule doctor (glasses prescription) @life
+x 2025-06-30 schedule dentist (whitening) @life
+x 2025-06-30 figure out audio devices @pcsetup
+x 2025-06-30 rofi config menu @pcsetup
+x 2025-06-30 rofi power menu @pcsetup
+x 2025-06-30 capslock indicator on polybar @pcsetup
+x 2025-06-30 make a more usable rofi setup @pcsetup
+x 2025-07-01 figure out thunar error messages @pcsetup
+x 2025-07-04 make volume change notification with dunst @pcsetup
+x 2025-07-04 fix cursor on all applications @pcsetup
+x 2025-07-04 download and learn rofi-calc @pcsetup
+x 2025-07-04 make bookmark menu with rofi @pcsetup
