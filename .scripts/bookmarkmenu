@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+chosen=""
+
+# Shows rofi with the bookmark tags
+run_rofi_tags() {
+    grep "##" $HOME/Projects/bookmarks3 | rofi -dmenu -i -p "Bookmark Menu" \
+    -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 50%; height: 50%;}'
+}
+
+# Shows rofi with the bookmarks of the chosen tag
+run_rofi_bookmarks() {
+    grep " # $chosen" $HOME/Projects/bookmarks3 | cut -d ' ' -f 1 | rofi -dmenu -i -p "Bookmark Menu: $chosen" \
+    -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 50%; height: 50%;}'
+}
+
+chosen="$(run_rofi_tags)"
+echo $chosen
+chosen="${chosen:3}"
+echo $chosen
+if [[ ! -z $chosen ]]; then
+   bookmark="$(run_rofi_bookmarks)" 
+   echo $bookmark
+   $(xdotool type $bookmark)
+fi 

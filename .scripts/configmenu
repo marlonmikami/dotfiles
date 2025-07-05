@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if [[ ! -z $1 ]]; then
+    $HOME/.scripts/cf $1
+    exit 0
+fi
+
 # Options
 aliases=" aliases"
 alacritty=" alacritty"
@@ -12,7 +17,7 @@ vim=" vim"
 
 # Shows rofi with the options
 run_rofi() {
-    echo -e "$aliases\n$alacritty\n$bash\n$bspwm\n$polybar\n$sxhkd\n$vim" | rofi -dmenu -p "Configure" \
+    echo -e "$aliases\n$alacritty\n$bash\n$bspwm\n$polybar\n$sxhkd\n$vim" | rofi -dmenu -i -p "Configure" \
     -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 250px;}' \
     -theme-str 'listview {lines: 7;}'
 }

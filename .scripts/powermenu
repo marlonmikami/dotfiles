@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
 # Options
-shutdown=' Shutdown'
-reboot='󰑓 Reboot'
+shutdown=' Shutdown           poweroff'
+reboot=' Reboot               restart'
 cancel=' Cancel'
 yes=' Yes'
 no=' No'
 
 # Shows rofi with the power options
 run_rofi() {
-    echo -e "$shutdown\n$reboot\n$cancel" | rofi -dmenu -p "Power Menu" \
+    echo -e "$shutdown\n$reboot\n$cancel" | rofi -dmenu -i -p "Power Menu" \
     -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 250px;}' \
     -theme-str 'listview {lines: 3;}'
 }
@@ -47,11 +47,11 @@ shutdown_routine() {
 chosen="$(run_rofi)" 
 case ${chosen} in
     $shutdown)
-        shutdown_routine "Shutting down" "shutdown"
+        shutdown_routine "Shutting down" "shutdown -h now"
         return 0
     ;;
     $reboot)
-        shutdown_routine "Rebooting" "reboot"
+        shutdown_routine "Rebooting" "shutdown -r now"
         return 0
     ;;
     $cancel)

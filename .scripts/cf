@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-echo $1
-
 case $1 in
     "aliases")
         vim $HOME/.bash_aliases 
@@ -17,8 +15,20 @@ case $1 in
         vim $HOME/.config/bspwm/bspwmrc 
         bspc wm -r
     ;;
+    "dunst")
+        vim $HOME/.config/dunst/dunstrc
+    ;;
+    "picom")
+        vim $HOME/.config/picom/picom.conf
+    ;;
     "polybar")
         vim $HOME/.config/polybar/config.ini
+    ;;
+    "rofi")
+        vim $HOME/.config/rofi/config.rasi
+    ;;
+    "starter")
+        vim $HOME/.config/starter.sh
     ;;
     "sxhkd")
         vim $HOME/.config/sxhkd/sxhkdrc
@@ -26,5 +36,12 @@ case $1 in
     ;;
     "vim")
         vim $HOME/.vimrc
+    ;;
+    "zathura")
+        vim $HOME/.config/zathura/zathurarc
+    ;;
+    *)
+        echo "Option $1 is not valid"
+        exit 1
     ;;
 esac

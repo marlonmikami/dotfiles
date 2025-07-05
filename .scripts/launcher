@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+option_btop="btop"
+option_calc="calc"
+option_chrome="Google Chrome"
+option_libreSprite="LibreSprite"
+option_ncspot="ncspot"
+option_thunar="Thunar"
+option_yazi="yazi"
+option_config="Config Menu"
+option_power="Power Menu"
+
+# Shows rofi with the power options
+run_rofi() {
+    echo -e "$option_btop\n$option_calc\n$option_chrome\n$option_libreSprite\n$option_ncspot\n$option_thunar\n$option_yazi\n$option_config\n$option_power" | rofi -dmenu -i -p "Launch" \
+    -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 250px;}' \
+    -theme-str 'listview {lines: 9;}'
+}
+
+
+chosen="$(run_rofi)" 
+
+case ${chosen} in
+    $option_btop)
+        alacritty msg create-window -e btop || alacritty -e btop
+    ;;
+    $option_calc)
+        rofi -show calc
+    ;;
+    $option_chrome)
+        google-chrome-stable
+    ;;
+    $option_libreSprite)
+        (LibreSprite &) && exit
+    ;;
+    $option_ncspot)
+        alacritty msg create-window -e ncspot || alacritty -e ncspot
+    ;;
+    $option_thunar)
+        thunar
+    ;;
+    $option_yazi)
+        alacritty msg create-window -e yazi || alacritty -e yazi
+    ;;
+    $option_config)
+        . $HOME/.scripts/configmenu
+    ;;
+    $option_power)
+        . $HOME/.scripts/powermenu
+    ;;
+esac
