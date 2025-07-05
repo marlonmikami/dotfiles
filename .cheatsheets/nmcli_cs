@@ -1,0 +1,7 @@
+nmcli r wifi off
+nmcli r wifi on
+nmcli d wifi list
+nmcli con
+nmcli con down <wifi name>
+nmcli con up <wifi name>
+nmcli device wifi rescan

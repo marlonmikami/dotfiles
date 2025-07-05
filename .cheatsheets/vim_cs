@@ -1,0 +1,29 @@
+# Movement
+
+# Buffers
+:e <file>                    Open a file into a new buffer 
+:enew                        Open a new empty buffer
+:bn                          Cycle to the next buffer
+:bp                          Cycle to the previous buffer
+:b <number>                  Go to a specific buffer using its numbered id
+:b <name>                    Go to a specific buffer using its name
+
+# Window
+:new <file>                  Open a file in a new window bellow the current
+:vert new <file>             Open a file in a new window besides the current
+ctrl+w, v                    Opens a new vertical split
+ctrl+w, s                    Opens a new horizontal split
+crtl+w, <h,j,k,l>            Move between windows
+crtl+w,shift + <h,j,k,l>     Swap windows
+crtl+w, r                    Rotate windows
+ctrl+w, c                    Close the current windows
+ctrl+w, o                    Close all other windows
+crts+w, =                    Makes all windows the same size
+
+# Tabs
+
+# Others
+:r <file>                    Add the contents of a file into your current buffer
+:Explore                     Opens a file explorer
+:Texplore
+:Sexplore
