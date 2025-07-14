@@ -1,0 +1,3 @@
+program_options:
+  notify: true           # Enable notifications
+  automount: true        # Enable automatic mounting

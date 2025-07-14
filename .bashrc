@@ -13,14 +13,11 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 export EDITOR='vim'
-export PATH=$PATH:$HOME/.scripts
+export PATH="$PATH:$HOME/.scripts"
+export PATH="$PATH:/home/marlon/.local/bin"
 
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --bash)"
 
 # Set up zoxide
 eval "$(zoxide init bash)"
-
-#eval "$(register-python-argcomplete pipx)"
-
-export PATH="$PATH:/home/marlon/.local/bin"

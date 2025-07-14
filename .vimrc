@@ -1,7 +1,5 @@
 " set number
 set nocompatible
-filetype plugin on
-
 set encoding=utf-8
 filetype plugin on
 

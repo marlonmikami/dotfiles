@@ -1,11 +1,11 @@
 Make some sort of vision board @life
 learn about ImageMagick @pcsetup
 look into eww bar @pcsetup
-learn to use ncspot @pcsetup
-figure out nsxiv vs feh @pcsetup
 write background characters for RPG @life
-talk to Neto about Avatar commander decks @life
 clean up the pantry @life
 figure out fan control @pcsetup
-make a start menu on polybar @pcsetup
 rofi wifi menu @pcsetup
+setup a pali on-screen keyboard @pcsetup
+figure out how to connect to share folder @pcsetup
+start following more people on instagram (family) @life
+figure out why pc is slow aafter wake (not enough power?) @pcsetup

@@ -1,10 +1,14 @@
 #!/bin/bash
 
+# ========== FOLDERS ==========
+mkdir Download Pictures Projects Study Videos
+
+
 # ========== PACMAN ==========
 echo "Installing packages through pacman"
 
 echo "Installing hardware related packages and tools"
-sudo pacman -S --noconfirm acpi bluetui bluez bluez-deprecated-tools bluez-utils impala linux-firmware pipewire pipewire-audio pipewire-pulse wireplumber
+sudo pacman -S --noconfirm acpi bluetui bluez bluez-deprecated-tools bluez-utils cpupower impala linux-firmware nmcli pipewire pipewire-audio pipewire-pulse wireplumber
 
 echo "Installing desktop related packages and tools"
 sudo pacman -S --noconfirm bspwm picom polybar sxhkd xorg
@@ -13,8 +17,7 @@ echo "Installing fonts"
 sudo pacman -S --noconfirm noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-roboto-mono ttf-roboto-mono-nerd
 
 echo "Installing tools"
-sudo pacman -S --noconfirm alacritty aspell aspell-en bat btop dua-cli dunst eza fastfetch fd feh fzf git github-cli gvim libnotify maim ncspot notify-osd nsxiv p7zip poppler rofi stow ueberzugpp w3m yazi yt-dlp zathura zathura-pdf-mupdf zoxide
-
+sudo pacman -S --noconfirm alacritty aspell aspell-en bat btop dua-cli dunst eza fastfetch fd flameshot feh fzf git github-cli gvim libnotify maim mpv ncspot notify-osd nsxiv p7zip poppler rofi rofi-calc stow ueberzugpp w3m xdotool yazi yt-dlp zathura zathura-pdf-mupdf zoxide
 echo "Installing gtk stuff"
 lsudo pacman -S --noconfirm thunar tumbler xappearance-gtk4
 
@@ -66,6 +69,15 @@ if [ ! -a ~/.inputrc ]; then echo '$include /etc/inputrc' > ~/.inputrc; fi
 
 
 # to fix trackpad: /etc/X11/xorg.conf.d/40-libinput.conf 
+# Section "InputClass"
+#     Identifier "libinput touchpad catchall"
+#     MatchIsTouchpad "on"
+#     MatchDevicePath "/dev/input/event*"
+#     Driver "libinput"
+#     Option "Tapping" "on"
+#     Option "NaturalScrolling" "true"
+#     Option "ClickMethod" "clickfinger"
+# EndSection
 
 # To setup auto login
 #/etc/systemd/system/getty@tty1.service.d/autologin.conf
@@ -83,10 +95,12 @@ if [ ! -a ~/.inputrc ]; then echo '$include /etc/inputrc' > ~/.inputrc; fi
 sudo bash -c "echo \"HandlePowerKey=ignore\" >> /etc/systemd/logind.conf"
 
 # Start services
-systemctl start bluetooth.service
+sudo systemctl enable bluetooth.service
+sudo systemctl start bluetooth.service
 
 # Make my scripts executable
 chmod +x $HOME/.scripts/*
+chmod +x $HOME/.scripts/polybar/*
 
 # Themes
 #https://www.xfce-look.org/p/1681313

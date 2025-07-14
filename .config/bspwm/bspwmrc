@@ -1,10 +1,10 @@
 #! /bin/sh
 
-bspc monitor -d 1 2 3 4 5 6 7 8 9
+bspc monitor -d 1 2 3 4 5 # 6 7 8 9
 
 bspc config border_width         2
 #bspc config window_gap           10
-bspc config window_gap           2
+bspc config window_gap           0
 
 bspc config split_ratio          0.5
 bspc config borderless_monocle   false
@@ -22,7 +22,7 @@ bspc config normal_border_color \#1d2021
 
 
 # Terminate already running polybar, picom and sxhkd instances
-processes=("picom" "polybar" "sxhkd" "dunst")
+processes=("picom" "polybar" "sxhkd" "dunst" "udiskie")
 
 for process in "${processes[@]}"; do
   if pidof -q "$process"; then
@@ -41,7 +41,9 @@ polybar --reload &
 
 # Run the notification service
 dunst &
-#/usr/lib/notify-osd/notify-osd &
+
+# Run the auto mount daemon
+udiskie &
 
 # Set a random wallpaper
 feh --randomize --no-fehbg --bg-fill $HOME/Pictures/Wallpapers/gruvbox/minimal &
@@ -52,6 +54,7 @@ setxkbmap -model abnt2 -layout br &
 # Fix cursor
 xsetroot -cursor_name left_ptr
 
-dunstify "System reloaded"
+#dunstify "System reloaded"
+nmcli r wifi off && nmcli r wifi on &
 
 

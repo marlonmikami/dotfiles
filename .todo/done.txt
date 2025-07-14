@@ -28,3 +28,10 @@ x 2025-07-04 make volume change notification with dunst @pcsetup
 x 2025-07-04 fix cursor on all applications @pcsetup
 x 2025-07-04 download and learn rofi-calc @pcsetup
 x 2025-07-04 make bookmark menu with rofi @pcsetup
+x 2025-07-05 learn to use ncspot @pcsetup
+x 2025-07-05 figure out nsxiv vs feh @pcsetup
+x 2025-07-05 make a start menu on polybar @pcsetup
+x 2025-07-07 figure out what is wrong with bluetooth @pcsetup
+x 2025-07-13 figure out how to get camera feed @pcsetup
+x 2025-07-14 figure out auto mount usb @pcsetup
+x 2025-07-14 try udisks @pcsetup

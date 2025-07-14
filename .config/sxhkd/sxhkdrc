@@ -20,6 +20,8 @@ XF86PowerOff
 alt + Tab
     rofi -show window
 
+
+
 # === Applications ==========
 
 # terminal emulator
@@ -36,14 +38,18 @@ mod4 + n
 mod4 + alt + n
     alacritty msg create-window -e vim "$HOME/Notes/scratchpad.md" || alacritty -e vim "$HOME/Notes/scratchpad.md"
 
+
+
 # === Shortcuts =============
 
 # take screenshot
-mod4 + s
-    maim ~/Pictures/$(date +%s).png && dunstify "Screenshot taken"
+Print
+     flameshot full -p $HOME/Pictures/Screenshots/
+#    maim ~/Pictures/Screenshots/$(date +%s).png && dunstify "Screenshot taken"
 
-mod4 + alt + s
-    maim -s ~/Pictures/$(date +%s).png && dunstify "Screenshot taken"
+shift + Print
+     flameshot gui -p $HOME/Pictures/Screenshots/ &
+#    maim -s ~/Pictures/Screenshots/$(date +%s).png && dunstify "Screenshot taken"
 
 # brightness
 XF86MonBrightnessUp
@@ -54,11 +60,13 @@ XF86MonBrightnessDown
 
 #volume
 XF86Audio{Lower,Raise}Volume
-    volumenotification {down,up}
+    volumecontrol {down,up} no-notification
 
 # mute
 XF86AudioMute
     wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+
+
 
 # === BSPWM =================
 
@@ -68,7 +76,7 @@ mod4 + Escape
 
 # Toogle gap size
 mod4 + g
-    [ $(bspc config window_gap) = 2 ] && bspc config window_gap 20 || bspc config window_gap 2
+    gaptoggle
 
 # quit/restart bspwm
 mod4 + alt + {q,r}
@@ -97,6 +105,9 @@ mod4 + y
 # set the window state
 #mod4 + {t,shift + t,s,f}
 #	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+mod4 + t
+    bspc node -t ~floating
 
 mod4 + f
     bspc node -t ~fullscreen
