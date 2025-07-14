@@ -19,14 +19,13 @@ elif [ "$1" == "down" ]; then
     fi
 fi
 
+if [ "$2" == "no-notification" ]; then
+    exit 0
+fi
+
 if (( changed > 0 )); then
     volume="$(pulsemixer --get-volume | cut -d ' ' -f 1)"
-    #bar=$(seq -s "═" $(($volume / 5)) | sed 's/[0-9]//g')
-    #bar=$(seq -s "═" $(($volume / 5)) )
-    #bar=$(printf %$(($volume / 5))s |tr " " "━")
-    #bar=$(printf %s {$(($volume / 5))})
     bar_width="$(($volume / 5))"
-    echo $bar_width
     bar=" "
     if (( $volume == 100 )); then
         bar="     ▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰     $volume\% "

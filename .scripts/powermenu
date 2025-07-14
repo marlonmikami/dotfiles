@@ -38,23 +38,32 @@ shutdown_routine() {
         done
         $2
     else
-        return 0
+        exit 0
     fi
 }
 
- 
+case $1 in 
+    "shutdown")
+        shutdown_routine "Shutting down" "shutdown -h now"
+        exit 0
+    ;;
+    "reboot")
+        shutdown_routine "Rebooting" "shutdown -r now"
+        exit 0
+    ;;
+esac
 
 chosen="$(run_rofi)" 
 case ${chosen} in
     $shutdown)
         shutdown_routine "Shutting down" "shutdown -h now"
-        return 0
+        exit 0
     ;;
     $reboot)
         shutdown_routine "Rebooting" "shutdown -r now"
-        return 0
+        exit 0
     ;;
     $cancel)
-        return 0
+        exit 0
     ;;
 esac

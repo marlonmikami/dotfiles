@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [ $(bspc config window_gap) = 0 ]; then
+    bspc config window_gap 20 
+elif [ $(bspc config window_gap) = 20 ]; then
+    bspc config window_gap 50 
+elif [ $(bspc config window_gap) = 50 ]; then
+    bspc config window_gap 0 
+fi

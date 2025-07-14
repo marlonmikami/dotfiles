@@ -17,8 +17,7 @@ backup_local() {
         let dir_integer++
         backup_dir=$(get_backup_dir -$dir_integer)
     done
-    echo $backup_dir
-    #mkdir $backup_dir 
+    echo "Saving on $backup_dir"
     cp -r $HOME/Notes/ $backup_dir
 }
 
@@ -32,7 +31,7 @@ get_backup_dir() {
 # Check if the Notes folder exists in Home
 if [ ! -d $HOME/Notes ]; then
     echo "Did not found the Notes folder inside $HOME"
-    return
+    exit 1
 fi
 
 # Check if the usb folder exists in Home
@@ -54,7 +53,7 @@ if [ $backup_folder_exists = false ]; then
     read -p "Proceed with commit? (y/n) " proceed
     if [ $proceed != "y" ] && [ $proceed != "Y" ] ; then
         echo "Canceling. No backups made"
-        return
+        exit 0
     fi
     backup_commit
 else
