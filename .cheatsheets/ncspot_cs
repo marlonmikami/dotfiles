@@ -1,0 +1,53 @@
+=== VIEWS ===================
+F1           queue
+F2           search
+F3           library
+F8           album art
+
+
+=== PLAYBACK ================
+enter        play track or playlist
+space        queue track or playlist
+.            play item after the current playing track
+
+O            open contex
+S            save to library
+D            delete to library
+
+Shift+P      play/pause
+Shift+s      stop playback
+F            seek forward 1 sec
+B            seek back 1 sec
+Shift+F      seek forward 10 sec
+Shift+B      seek back 10 sec
+>            next track
+<            previous track
+
+-            decrease volume
++            increase volume
+
+z            toggle shuffle
+r            toggle repeat
+
+
+=== CONTEXT MENUS ============
+O            Open a detail view or context for the selected item.
+Shift+O      Open a context menu for the currently playing track.
+A            Open the album view for the selected item.
+Shift+A      Open the artist view for the selected item.
+M            Open the recommendations view for the selected item.
+Shift+M      Open the recommendations view for the currently playing track.
+Ctrl+V       Open the context menu for a Spotify link in your clipboard (if built with the share_clipboard feature).
+Backspace    Close the current view.
+
+
+=== SHARING ==================
+X            Copy the URL to the currently selected item to the system clipboard.
+Shift+X      Copy the URL to the currently playing track to the system clipboard.
+
+
+=============================
+https://github.com/hrkfdn/ncspot/blob/main/doc/users.md#library
+
+
+
